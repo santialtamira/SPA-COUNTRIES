@@ -2,7 +2,9 @@
 // const {fetch} = require("node-fetch")
 const axios = require('axios');
 const { Router } = require('express');
-const { Country } = require("../db");
+const { Country, Activity } = require("../db");
+
+
 // Importar todos los routers;
 
 const router = Router();
@@ -71,25 +73,34 @@ router.get("/", async (req, res) => {
     }
 });
 
-// router.get("/:id", (req, res) => {
-//     res.send("Obtener el detalle de una raza de perro en particular");
-// })
-
-// router.post("/", async (req, res) =>{
-//     console.log("body de post/dogs", req.body)
-
-//     let height = `${req.body.min_height} - ${req.body.max_height}`
-//     let weight = `${req.body.min_weight} - ${req.body.max_weight}`
-//     let life_span = `${req.body.min_life_span} - ${req.body.max_life_span}`
-
-//     let dog = await Dog.create({ weight: weight, height: height, name: req.body.name, life_span: life_span, image: req.body.image })
+router.get("/byActivity", async (req, res) => {
+    const { activ } = req.query;
     
-//     req.body.temperament && req.body.temperament.map(async (temp) =>{
-//         const temperamento = await Temperament.findOne({ where: { name: temp.trim() } });
-//         await dog.addTemperament(temperamento);
-//     })
-    
-//     res.send("Perro creado")
-// })
+    let foundCountries = await Country.findAll({ 
+        include: [{
+        model: Activity,
+        where: {name: activ}
+        }],
+    });
+
+    res.send(foundCountries);
+})
+
+router.get("/:idPais", async (req, res) => {
+    console.log("PARAMS", req.params)
+    const { idPais } = req.params;
+    let foundCountry = await Country.findOne({ 
+        where: { id: idPais.trim() } 
+        , 
+        include: [{
+        model: Activity,
+        through: {
+            attributes: []
+            }
+        }]
+    });
+
+    res.send(foundCountry);
+})
 
 module.exports = router;

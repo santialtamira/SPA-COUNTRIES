@@ -1,5 +1,11 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { loadAllCountries } from "../../actions";
+import Card from "../../Components/Card/Card";
+import NavBar from "../../Components/Navbar/NavBar";
+import s from "./AllCountries.module.css";
+import Paginator from "../../Components/Paginator/Paginator.jsx";
+
 
 function mapStateToProps(state) {
     return {
@@ -9,42 +15,44 @@ function mapStateToProps(state) {
 
 function AllCountries(props){
 
-    // usar un useEffect 
-    // primero chequeo si están los paises en el store.
-    // si no hay nada en el store, chequeo si hay algo en la base de datos.
-    // hago un request a mi servidor. Si el response viene vacio, entonces hago una petición a la appi 
-    // y con esa info lleno la base de datos.
-    // Si hay algo en el response, entonces renderizo esa info
+    const [currentPage, setCurrentPage] = useState(1);
+    const [cardsPerPage] = useState(8);
+    const startFromIndex = (currentPage * cardsPerPage) - cardsPerPage;
+    const endAtIndex = (currentPage * cardsPerPage);
+    const cardsToShowAtThisPage = props.allCountries.slice(startFromIndex, endAtIndex);
+
     useEffect(()=>{
         // Si no hay ningún country en el store, reviso la base de datos.
         if(props.allCountries.length < 1){
-            console.log("1- Nada en el SOTRE, revisando BD") //
 
-            const allCountriesDB = fetch("http://localhost:3001/countries") 
+            fetch("http://localhost:3001/countries") 
                 .then(r => r.json())
                 .then((recurso) => {
-                    console.log("TODOS LOS PAISES DESDE ALLCOUNTRIES",recurso)
+                    props.loadAllCountries(recurso)
                     return recurso;
                 });
-            
-
         }
-
-
-
-
 
     }, []);
 
+    function newPaginator(page){
+        setCurrentPage(page);
+    }
+
     return(
-        <div>
-            <h1>Aca se muestran ALL COUNTRIES</h1>
+        <div className={s.allCountriesContainer}>
+            <NavBar></NavBar>
+            <div className={s.cardsContainer}>
+                {cardsToShowAtThisPage.map(country =>{
+                    if(country.name){
+                        return <Card name={country.name} imgFlag={country.imgFlag} continent={country.continent} key={country.id} id={country.id}></Card>
+                    }
+                }
+                )}
+            </div>
+            <Paginator newPaginator={newPaginator} cardsPerPage={cardsPerPage}></Paginator>
         </div>
     )
 }
 
-export default connect(mapStateToProps,{})(AllCountries)
-
-// Primero tengo que trabajar en los modelos.
-// luego en las rutas del backend
-// Recién ahí puedo retomar con esto.
+export default connect(mapStateToProps,{loadAllCountries})(AllCountries)

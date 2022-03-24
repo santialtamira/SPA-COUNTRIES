@@ -4,6 +4,8 @@ import Landing from './pages/Landing/Landing.jsx';
 import React from "react";
 import Detail from './pages/Detail/Detail';
 import AllCountries from './pages/AllCountries/AllCountries';
+import FormActivity from './pages/FormActivity/FormActivity';
+
 
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
         <Route path='/' element={<Landing />} />
         <Route path='/countries' element={<AllCountries />} />
         <Route path='/countries/:id' element={<Detail />} />
+        <Route path='/formActivity' element={<FormActivity />} />
       </Routes>
     </div>
   );

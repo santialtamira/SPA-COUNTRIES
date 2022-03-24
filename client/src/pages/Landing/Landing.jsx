@@ -1,8 +1,18 @@
+import { useNavigate } from "react-router-dom";
+import s from "./Landing.module.css";
 
 export default function Landing(){
+    const navigate = useNavigate();
+    function handleClick(){
+        navigate("/countries")
+    }
+
     return(
-        <div>
-            <h1>Esta es la landing</h1>
+        <div className={s.container}>
+            <div className={s.textAndbtn}>
+                <h1>Welcome to our COUNTRIES page!</h1>
+                <button className={s.btn} onClick={handleClick}>View All Countries</button>
+            </div>
         </div>
     )
 }

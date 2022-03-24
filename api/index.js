@@ -23,7 +23,7 @@ const { conn } = require('./src/db.js');
 const {Country, Activity} = require("./src/db.js")
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(async () => {
+conn.sync({ force: false }).then(async () => {
 
   // const repDeCba = await Country.create({name: "Cordoba", continent: "America", capital: "B jardin", subRegion: "America del sur", area: 60000, population: 4000000, id: "CBA", imgFlag: "https://flagcdn.com/bw.svg"})
   // const trekking = await Activity.create({name: "Trekking", dificulty: 3, duration: 90, season: "summer"})

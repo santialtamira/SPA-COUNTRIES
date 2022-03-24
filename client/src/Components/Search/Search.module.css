@@ -1,0 +1,24 @@
+.containerSearch{
+    margin: 0px 25px;
+}
+
+.selectBox{
+    border: solid #0A9396 2px;
+    padding: 8px 10px;
+    color: #0A9396;
+    border-radius: 15px 0px 0px 15px;
+}
+
+.btnSelect{
+    padding: 10px 10px;
+    background-color: #0A9396;
+    border: solid 1px #0A9396;
+    color: white;
+    border-radius: 0px 15px 15px 0px
+}
+
+.btnSelect:hover{
+    /* background-color: white; */
+    color: #EE9B00;
+    /* border: #0A9396 solid 2px ; */
+}
