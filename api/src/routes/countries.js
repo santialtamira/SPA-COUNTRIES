@@ -69,6 +69,15 @@ router.get("/", async (req, res) => {
             });    
     }else{
         console.log("3- a ver el orden..")
+        function isNotEmpty(obj) {
+            return Object.keys(obj).length !== 0;
+        }
+    
+        if(isNotEmpty(req.query)){
+            const {q} = req.query;
+            filteredCountries = allCountries.filter(country => country.name.toUpperCase().includes(q.toUpperCase()) )
+            allCountries = filteredCountries;
+        }
         res.send(allCountries);
     }
 });
@@ -87,7 +96,6 @@ router.get("/byActivity", async (req, res) => {
 })
 
 router.get("/:idPais", async (req, res) => {
-    console.log("PARAMS", req.params)
     const { idPais } = req.params;
     let foundCountry = await Country.findOne({ 
         where: { id: idPais.trim() } 

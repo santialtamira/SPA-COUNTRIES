@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import s from "./FormActivity.module.css";
 import NavBar from "../../Components/Navbar/NavBar.jsx";
+import { loadAllCountries } from "../../actions";
+
 
 function mapStateToProps(state) {
     return {
@@ -34,6 +36,15 @@ function FormActivity(props){
         duration: "",
         season: "",
         addedCountries: [],   
+    });
+
+    useEffect(()=>{
+        fetch("http://localhost:3001/countries") 
+                .then(r => r.json())
+                .then((recurso) => {
+                    props.loadAllCountries(recurso)
+                    return recurso;
+                });
     });
 
     function changeHandler(e){
@@ -136,4 +147,4 @@ function FormActivity(props){
     )
 }
 
-export default connect(mapStateToProps, {})(FormActivity);
+export default connect(mapStateToProps, {loadAllCountries})(FormActivity);

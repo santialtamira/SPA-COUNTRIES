@@ -20,9 +20,16 @@ function Search(props){
     function submitHandler(event){
         event.preventDefault();
         // console.log("DESDE SEARCH HACIA ACTIONS", props.allCountries);
-        let filteredCountries = props.allCountries.filter(country => country.name.toUpperCase().includes(userInput.toUpperCase()) );
+        // let filteredCountries = props.allCountries.filter(country => country.name.toUpperCase().includes(userInput.toUpperCase()) );
         // console.log(filteredCountries)
-        props.loadFilteredCountriesByName(filteredCountries);
+        fetch(`http://localhost:3001/countries?q=${userInput.toUpperCase()}`) 
+                .then(r => r.json())
+                .then((recurso) => {
+                    
+                    props.loadFilteredCountriesByName(recurso);
+                    return recurso;
+                });
+        
     }
 
     return(
