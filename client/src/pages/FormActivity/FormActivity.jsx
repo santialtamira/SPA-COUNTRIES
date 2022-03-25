@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { connect } from "react-redux";
+import s from "./FormActivity.module.css";
+import NavBar from "../../Components/Navbar/NavBar.jsx";
 
 function mapStateToProps(state) {
     return {
@@ -7,10 +9,27 @@ function mapStateToProps(state) {
     };
 }
 
+export function validate(input) {
+    let errors = {};
+    if (!input.name) {
+        errors.name = 'Activity name is required';
+    }
+    if (!input.duration) {
+        errors.duration = 'Duration is required';
+    }
+
+    if (!/(?=.*[0-9])/.test(input.duration)) {
+        errors.duration = 'Duration only accept numbers.';
+    }
+    return errors;
+};
+
 function FormActivity(props){
 
+    const [errors, setErrors] = useState({});
+
     const [input, setInput] = useState({
-        name: "",
+        name: "", //que el name no tenga más de 20 letras.
         dificulty: "",
         duration: "",
         season: "",
@@ -21,13 +40,18 @@ function FormActivity(props){
         setInput({
             ...input,
             [e.target.name]: e.target.value
-        })
+        });
+
+        setErrors(validate({
+                ...input,
+                [e.target.name]: e.target.value
+            }));
     }
 
     function clickHandler(e){
         e.preventDefault();
         let addCountry = document.getElementById("addedCountries").value;
-        let repo = document.querySelector(".countriesRepo");
+        let repo = document.querySelector("#countriesRepo");
         console.log("repoooo",repo)
 
         repo.insertAdjacentHTML('afterend', `<p>${addCountry}</p>`);
@@ -52,57 +76,62 @@ function FormActivity(props){
     }
 
     return(
-        <div>
-            <h1>Add an Activity</h1>
-            <form onSubmit={submitHandler}>
+        <div className={s.pageContainer}>
+            <NavBar></NavBar>
+            <div className={s.formContainer}>
+                <h1 className={s.formTitle}>Add an Activity</h1>
+                <form onSubmit={submitHandler}>
 
-                <div>
-                    <p>Name</p>
-                    <input type="text" name="name" onChange={changeHandler} value={input.name}/>
-                </div>
-
-                <div>
-                    <p>Dificulty</p>
-                    <select name="dificulty" id="dificulty" onChange={changeHandler} value={input.dificulty}>
-                        <option value="select">Select</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-
-                <div>
-                    <p>Duration</p>
-                    <input type="text" name="duration" onChange={changeHandler} value={input.duration}/>
-                </div>
-
-                <div>
-                    <p>Season</p>
-                    <select name="season" id="season" onChange={changeHandler} value={input.season}>
-                        <option value="select">Select</option>
-                        <option value="summer">Summer</option>
-                        <option value="winter">Winter</option>
-                        <option value="autumn">Autumn</option>
-                        <option value="spring">Spring</option>
-                    </select>
-                </div>
-
-                <div>
-                    <p>Add countries</p>
-                    <div className="countriesRepo">
+                    <div className={s.twoElements}>
+                        <p>Name</p>
+                        <input type="text" name="name" onChange={changeHandler} value={input.name} className={s.twoElemBoxA}/>
                     </div>
-                    <select name="addedCountries" id="addedCountries">
-                        {props.allCountries.map(country =>
-                            <option value={country.name} key={country.id}>{country.name}</option>
-                        )}
-                    </select>
-                    <button onClick={clickHandler}>Add country</button>
-                </div>
+                        <div>{errors.name && (<p className={s.danger}>{errors.name}</p>)}</div>
 
-                <input type="submit" value="Submit!" />
-            </form>
+                    <div className={s.twoElements}>
+                        <p>Dificulty</p>
+                        <select name="dificulty" id="dificulty" onChange={changeHandler} value={input.dificulty} className={s.twoElemBoxB}>
+                            <option value="select">Select</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <div className={s.twoElements}>
+                        <p>Duration in hours</p>
+                        <input type="text" name="duration" onChange={changeHandler} value={input.duration} className={s.twoElemBoxA}/>
+                    </div>
+                        <div>{errors.duration && (<p className={s.danger}>{errors.duration}</p>)}</div>
+
+                    <div className={s.twoElements}>
+                        <p>Season</p>
+                        <select name="season" id="season" onChange={changeHandler} value={input.season} className={s.twoElemBoxB}>
+                            <option value="select">Select</option>
+                            <option value="summer">Summer</option>
+                            <option value="winter">Winter</option>
+                            <option value="autumn">Autumn</option>
+                            <option value="spring">Spring</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <p>Add countries</p>
+                        <div id="countriesRepo" className={s.repo}>
+                        </div>
+                        <select name="addedCountries" id="addedCountries" className={s.selectBox}>
+                            {props.allCountries.map(country =>
+                                <option value={country.name} key={country.id}>{country.name}</option>
+                            )}
+                        </select>
+                        <button onClick={clickHandler} className={s.addActivityBtn}>Add country</button>
+                    </div>
+
+                    <input type="submit" value="Add your Activity!" className={s.submitBtn}/>
+                </form>
+            </div>
         </div>
     )
 }

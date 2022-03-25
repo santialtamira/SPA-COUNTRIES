@@ -17,7 +17,7 @@ function Paginator(props){
         
         <div className={s.paginatorContainer}>
             {paginationNumbers.map(num => ( 
-                <a href="#!" key={num} className={s.numbers} onClick={()=> props.newPaginator(num)}>{num} - </a>
+                <a href="#!" key={num} className={s.numbers} onClick={()=> props.newPaginator(num)}>{num} </a>
             ))}
         </div>
         

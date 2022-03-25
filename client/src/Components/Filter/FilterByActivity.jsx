@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { loadAllActivities, loadFilteredCountriesByActivity, loadAllCountries } from "../../actions";
 import { useEffect } from "react";
-
+import s from "./FilterByActivity.module.css";
 
 
 function mapStateToProps(state) {
@@ -38,13 +38,13 @@ function FilterByActivity(props){
     return(
         <div>
             <form >
-                <select name="" id="selectActivity">
+                <select name="" id="selectActivity" className={s.selectBox}>
                     {props.activities.map(activity => {
                         return <option key={activity.id} value={activity.name}>{activity.name}</option>
                     }  
                     )}
                 </select>
-                <input type="submit" value="Filter" onClick={clickHandler}/>
+                <input type="submit" value="Filter" onClick={clickHandler} className={s.btnSelect}/>
             </form>
         </div>
     )

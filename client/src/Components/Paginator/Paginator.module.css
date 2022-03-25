@@ -1,0 +1,12 @@
+.paginatorContainer{
+    display: flex;
+    background-color: #121418;
+    justify-content: center;
+    margin-bottom: 0px;
+}
+
+.numbers{
+    margin: 10px;
+    text-decoration: none;
+    color: whitesmoke;
+}

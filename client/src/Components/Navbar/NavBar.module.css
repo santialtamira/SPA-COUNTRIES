@@ -1,5 +1,18 @@
 .navContainer{
     display: flex;
-    justify-content: space-around;
-    margin: 25px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: cadetblue 1px solid;
+    margin-bottom: 25px;
+}
+
+.title{
+    padding-left: 80px;
+    text-decoration: none;
+    font-size: 30px;
+    color: #3750FE;
+}
+
+.aLink{
+    text-decoration: none;
 }

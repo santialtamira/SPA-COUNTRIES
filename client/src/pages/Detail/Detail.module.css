@@ -1,0 +1,63 @@
+.detailContainer{
+    width: 90%;
+    /* background-color: gray; */
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 45px;
+    height: 545px;
+    align-items: center;
+}
+
+.totalCont{
+}
+
+.leftBox{
+
+}
+
+.middleBox{
+    width: 400px;
+}
+
+.rightBox{
+    width: 440px;
+    height: 392px;
+}
+
+.img{
+    width: 480px;
+}
+
+.threeElements{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+.activityBox{
+    border: #44BA94 1px solid;
+    margin: 10px 0px;
+    color: #49494C;
+}
+
+.activityTitle{
+    color: #44BA94;
+    /* margin-bottom: 33px; */
+}
+
+.generalinfoTitle{
+    color: #44BA94;
+}
+
+.generalInfoBox{
+    /* border: #3750FE 1px solid; */
+    margin: 40px 0px;
+    color: #49494C;
+    height: 273px;
+}
+
+.footer{
+    background-color: #49494C;
+    color: #49494C;
+}

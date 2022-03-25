@@ -1,0 +1,67 @@
+p.danger {
+    color: red;
+    font-size: 10px;
+}
+
+.formContainer{
+    background-color: #F3F4F6;
+    width: 561px;
+    margin: 100px auto;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.pageContainer{
+    
+}
+
+.twoElements{
+    display: flex;
+    justify-content: space-between;
+    height: 22px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+
+.twoElemBoxA{
+    width: 380px;
+    height: 17px;
+    
+}
+
+.twoElemBoxB{
+    width: 387px;
+}
+
+.formTitle{
+    margin-top: 0px;
+}
+
+.submitBtn{
+    margin-top: 15px;
+    width: 200px;
+    border: #44BA94 1px solid;
+    background-color: #44BA94;
+    color: white;
+    border-radius: 5px;
+    padding: 6px 12px;
+}
+
+.addActivityBtn{
+    border: #3750FE 1px solid;
+    background-color: #3750FE;
+    color: white;
+    border-radius: 0px 5px 5px 0px;
+    padding: 3px 7px;
+}
+
+.selectBox{
+    height: 24px;
+}
+
+.repo{
+    display: flex;
+    background-color: black;
+    color: #3750FE ;
+}

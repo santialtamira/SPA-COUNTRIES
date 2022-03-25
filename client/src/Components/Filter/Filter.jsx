@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { loadFilteredCountriesByContinent } from "../../actions";
-
+import s from "./Filter.module.css";
 
 
 function mapStateToProps(state) {
@@ -23,7 +23,7 @@ function Filter(props){
     return(
         <div>
             <form >
-                <select name="" id="selectContinent">
+                <select name="" id="selectContinent" className={s.selectBox}>
                     <option value="Africa">Africa</option>
                     <option value="Americas">Americas</option>
                     <option value="Antarctic">Antarctic</option>
@@ -31,7 +31,7 @@ function Filter(props){
                     <option value="Europe">Europe</option>
                     <option value="Oceania">Oceania</option>
                 </select>
-                <input type="submit" value="Filter" onClick={clickHandler}/>
+                <input type="submit" value="Filter" onClick={clickHandler} className={s.btnSelect}/>
             </form>
         </div>
     )

@@ -1,21 +1,14 @@
+import { Link } from "react-router-dom";
 import AddButton from "../AddButton/AddButton";
-import CleanFilter from "../CleanFilter/CleanFilter";
-import Filter from "../Filter/Filter";
-import FilterByActivity from "../Filter/FilterByActivity";
-import OrderBtn from "../OrderBtn/OrderBtn";
-import Search from "../Search/Search";
-import s from "./NavBar.module.css";
-
+import s from "./NavBar.module.css"
 
 
 function NavBar(){
     return(
         <div className={s.navContainer}>
-            <Search></Search>
-            <Filter></Filter>
-            <FilterByActivity></FilterByActivity>
-            <OrderBtn></OrderBtn>
-            <CleanFilter></CleanFilter>
+            <Link to="/countries" className={s.aLink}>
+                <h1 className={s.title}>Henry COUNTRIES</h1>
+            </Link>
             <AddButton></AddButton>
         </div>
     )

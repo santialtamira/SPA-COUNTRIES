@@ -6,3 +6,13 @@
     background-color: white;
     border-radius: 10px;
 }
+
+.img{
+    height: 160px;
+    width: 319px;
+}
+
+.aLink{
+    text-decoration: none;
+    color: #49494C;
+}

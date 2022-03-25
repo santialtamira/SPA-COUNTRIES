@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import { loadCountriesByOrder } from "../../actions";
-// import s from "./OrderDogs.module.css";
-
+import s from "./OrderBtn.module.css";
 
 function mapStateToProps(state){
     return{
@@ -70,13 +69,13 @@ function OrderBtn(props){
     return(
         <div >
             <form action="">
-                <select name="" id="listOfOrders" >
+                <select name="" id="listOfOrders" className={s.selectBox}>
                     <option value="populationAsc">Population Asc</option>
                     <option value="populationDesc">Population Desc</option>
                     <option value="NameAsc">Name Asc</option>
                     <option value="NameDesc">Name Desc</option>
                 </select>
-                <input type="submit" value="Order!" onClick={handleClick} />
+                <input type="submit" value="Order!" onClick={handleClick} className={s.btnSelect}/>
             </form>
         </div>
     )

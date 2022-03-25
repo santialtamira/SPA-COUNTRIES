@@ -1,0 +1,32 @@
+
+.container{
+    background-image: url('https://images.unsplash.com/photo-1592487501226-7ed5e5dc80f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
+    height: 100vh;
+    background-position: center ;
+    background-size: cover;
+    margin-top: -27px;
+}
+
+.btn{
+    border: white 2px solid;
+    background-color: white;
+    color: #FFB100;
+    border-radius: 25px;
+    font-size: 20px;
+    padding: 10px 15px;
+}
+
+.textAndbtn{
+    color: #3750FE;
+    font-size: 20px;
+    padding-top: 200px;
+}
+
+.btn:hover{
+    color: white;
+    border: white solid 2px;
+    background-color: transparent;
+}
+
+/* #3750FE */
+/* #FFB100 */

@@ -1,0 +1,15 @@
+.containerClean{
+    margin: 0px 25px;
+}
+
+.btn{
+    padding: 10px 10px;
+    background-color: #44BA94;
+    border: solid 1px #44BA94;
+    color: white;
+    border-radius: 15px;
+}
+
+.btn:hover{
+    color: #EE9B00;
+}

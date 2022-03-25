@@ -26,7 +26,7 @@ function Search(props){
     }
 
     return(
-        <div>
+        <div className={s.containerSearch}>
             <form action="" onSubmit={submitHandler}>
                 <input type="text" className={s.selectBox} onChange={onChangeHandler}/>
                 <input type="submit" value="Search!" className={s.btnSelect}/>
