@@ -48,12 +48,22 @@ p.danger {
     padding: 6px 12px;
 }
 
+.submitBtn:hover{
+    border: #066144 1px solid;
+    background-color: #066144;
+    
+}
 .addActivityBtn{
     border: #3750FE 1px solid;
     background-color: #3750FE;
     color: white;
     border-radius: 0px 5px 5px 0px;
     padding: 3px 7px;
+}
+
+.addActivityBtn:hover{
+    border: #021cc4 1px solid;
+    background-color: #021cc4;
 }
 
 .selectBox{
