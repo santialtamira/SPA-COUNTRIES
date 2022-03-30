@@ -14,7 +14,6 @@ router.get("/", async (req, res) => {
 
     let allCountries = await Country.findAll()
     if(allCountries.length < 1){
-        console.log("2- Nada en la DB, haciendo llamado a la API") //
 
         axios.get('https://restcountries.com/v3/all')
             .then( (response) => {
@@ -57,9 +56,7 @@ router.get("/", async (req, res) => {
                 }
             })
             .then( async (data) => { 
-                console.log("entré all succses handler para traer todos los paises")
                 let allTheCountries = await Country.findAll()
-                console.log("ALL THE COUNTRIES",allTheCountries)
                 return allTheCountries;
                 }, 
                 err => console.log("entré all error handler para traer todos los paises"))
@@ -68,7 +65,6 @@ router.get("/", async (req, res) => {
                 console.log(error);
             });    
     }else{
-        console.log("3- a ver el orden..")
         function isNotEmpty(obj) {
             return Object.keys(obj).length !== 0;
         }
