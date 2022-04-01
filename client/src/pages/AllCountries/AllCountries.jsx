@@ -58,10 +58,16 @@ function AllCountries(props){
                     if(country.name){
                         return <Card name={country.name} imgFlag={country.imgFlag} continent={country.continent} key={country.id} id={country.id}></Card>
                     }
-                }
+                    }
                 )}
+                {cardsToShowAtThisPage.length < 1 &&  
+                            <div >
+                                <p>There are no coincidences, try again..</p>
+                            </div>}
             </div>
-            <Paginator newPaginator={newPaginator} cardsPerPage={cardsPerPage}></Paginator>
+            
+            <Paginator newPaginator={newPaginator} cardsPerPage={cardsPerPage} currentPage={currentPage} ></Paginator>
+            
         </div>
     )
 }

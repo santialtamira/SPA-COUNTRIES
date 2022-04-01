@@ -11,7 +11,7 @@ router.post("/", async (req, res) => {
     const {name, dificulty, duration, season, addedCountries} = req.body;
     let activity = await Activity.create({name, dificulty, duration, season})
 
-    addedCountries && addedCountries.map(async (contryName) =>{
+    addedCountries.length > 0 && addedCountries.map(async (contryName) =>{
         let pais = await Country.findOne({ where: { name: contryName.trim() } });
         await pais.addActivity(activity);
     })

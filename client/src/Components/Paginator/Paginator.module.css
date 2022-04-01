@@ -10,3 +10,9 @@
     text-decoration: none;
     color: whitesmoke;
 }
+
+.btn{
+    background-color: #121418;
+    color: whitesmoke;
+    border: solid 1px #121418 ;
+}

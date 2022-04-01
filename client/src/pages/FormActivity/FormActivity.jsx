@@ -13,16 +13,26 @@ function mapStateToProps(state) {
 
 export function validate(input) {
     let errors = {};
+
+    if(input.name.length < 3){
+        errors.name = 'Activity name must have more than 3 characters';
+    }
     if (!input.name) {
         errors.name = 'Activity name is required';
+    }
+    if (!/(?=.*[0-9])/.test(input.duration)) {
+        errors.duration = 'Duration only accept numbers.';
     }
     if (!input.duration) {
         errors.duration = 'Duration is required';
     }
-
-    if (!/(?=.*[0-9])/.test(input.duration)) {
-        errors.duration = 'Duration only accept numbers.';
+    if(input.dificulty === "select" || input.dificulty === ""){
+        errors.dificulty = 'Choose another option diferent to Select';
     }
+    if(input.season === "select" || input.season === ""){
+        errors.season = 'Choose another option diferent to Select';
+    }
+
     return errors;
 };
 
@@ -45,7 +55,7 @@ function FormActivity(props){
                     props.loadAllCountries(recurso)
                     return recurso;
                 });
-    });
+    }, []);
 
     function changeHandler(e){
         setInput({
@@ -63,14 +73,13 @@ function FormActivity(props){
         e.preventDefault();
         let addCountry = document.getElementById("addedCountries").value;
         let repo = document.querySelector("#countriesRepo");
-        console.log("repoooo",repo)
 
         repo.insertAdjacentHTML('afterend', `<p>${addCountry}</p>`);
         setInput({
             ...input,
             addedCountries: [...input.addedCountries].concat(addCountry)
         })  
-        console.log("addedCountries",input.addedCountries);
+        
     }
 
     function submitHandler(e){
@@ -110,6 +119,7 @@ function FormActivity(props){
                             <option value="5">5</option>
                         </select>
                     </div>
+                    <div>{errors.dificulty && (<p className={s.danger}>{errors.dificulty}</p>)}</div>
 
                     <div className={s.twoElements}>
                         <p>Duration in hours</p>
@@ -127,6 +137,7 @@ function FormActivity(props){
                             <option value="spring">Spring</option>
                         </select>
                     </div>
+                    <div>{errors.season && (<p className={s.danger}>{errors.season}</p>)}</div>
 
                     <div>
                         <p>Add countries</p>
@@ -139,8 +150,9 @@ function FormActivity(props){
                         </select>
                         <button onClick={clickHandler} className={s.addActivityBtn}>Add country</button>
                     </div>
-
-                    <input type="submit" value="Add your Activity!" className={s.submitBtn}/>
+                    
+                    { (<input type="submit" disabled={Object.keys(errors).length !== 0} value="Add your Activity!" className={s.submitBtn}/>)}
+                    
                 </form>
             </div>
         </div>

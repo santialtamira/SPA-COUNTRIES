@@ -45,7 +45,6 @@ function Detail(props){
                     <div className={s.rightBox}>
                         <h2 className={s.activityTitle}>Activities</h2>
                         <div>
-                            {console.log("DETAILSSS", props.detail.activities)}
                             {props.detail.activities && props.detail.activities.length < 1 &&  
                             <div className={s.activityBox}>
                                 <p>There are no activities yet..</p>
