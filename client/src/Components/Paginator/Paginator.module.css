@@ -16,3 +16,10 @@
     color: whitesmoke;
     border: solid 1px #121418 ;
 }
+
+.currentNum{
+    margin: auto 10px;
+    text-decoration: none;
+    color: rgb(206, 201, 201);
+    font-size: 20px;
+}

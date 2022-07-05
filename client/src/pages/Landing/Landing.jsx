@@ -10,7 +10,7 @@ export default function Landing(){
     return(
         <div className={s.container}>
             <div className={s.textAndbtn}>
-                <h1>Welcome to our COUNTRIES page!</h1>
+                <h1 className={s.title}>Welcome to our COUNTRIES page!</h1>
                 <button className={s.btn} onClick={handleClick}>View All Countries</button>
             </div>
         </div>

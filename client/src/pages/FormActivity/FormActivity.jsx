@@ -139,6 +139,8 @@ function FormActivity(props){
                     </div>
                     <div>{errors.season && (<p className={s.danger}>{errors.season}</p>)}</div>
 
+
+                    
                     <div>
                         <p>Add countries</p>
                         <div id="countriesRepo" className={s.repo}>

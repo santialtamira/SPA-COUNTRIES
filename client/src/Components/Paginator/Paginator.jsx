@@ -19,7 +19,8 @@ function Paginator(props){
         props.newPaginator(props.currentPage + 1)
     }
     
-    for(let i=1; i <= Math.ceil(props.allCountries.length/props.cardsPerPage); i++){
+    for(let i = props.currentPage - 3; i <= props.currentPage + 3; i++){
+        if(i > 0 && i <= Math.ceil(props.allCountries.length/props.cardsPerPage))
         paginationNumbers.push(i)
     }
     return(
@@ -27,9 +28,11 @@ function Paginator(props){
         <div className={s.paginatorContainer}>
             {props.currentPage !== 1 &&(<button className={s.btn} onClick={handleBefore}>Before</button>)}
             {paginationNumbers.map(num => ( 
+                num === props.currentPage? 
+                <a href="#!" key={num} className={s.currentNum} onClick={()=> props.newPaginator(num)}><strong>{num}</strong> </a> :
                 <a href="#!" key={num} className={s.numbers} onClick={()=> props.newPaginator(num)}>{num} </a>
             ))}
-            <button className={s.btn} onClick={handleNext}>Next</button>
+            {props.currentPage < Math.ceil(props.allCountries.length/props.cardsPerPage) && <button className={s.btn} onClick={handleNext}>Next</button>}
         </div>
         
     )
