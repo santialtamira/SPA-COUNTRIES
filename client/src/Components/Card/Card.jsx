@@ -7,7 +7,7 @@ export default function Card(props){
         <div className={s.cardContainer}>
             <Link to={`/countries/${props.id}`} className={s.aLink}>
                 <img src={props.imgFlag} alt={`Flag from ${props.name}`} className={s.img}/>
-                <h3 className={s.nameTitle}>Country: {props.name}</h3>
+                <h3 className={s.nameTitle}>{props.name}</h3>
                 <p>Continent: {props.continent}</p>
             </Link>
             

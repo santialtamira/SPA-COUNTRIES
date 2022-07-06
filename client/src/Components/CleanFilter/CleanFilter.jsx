@@ -5,7 +5,6 @@ import s from "./CleanFilter.module.css";
 function CleanFilters(props){
 
     function handleClick(e){
-        e.preventDefault();
         fetch("http://localhost:3001/countries") 
                 .then(r => r.json())
                 .then((recurso) => {
@@ -16,7 +15,9 @@ function CleanFilters(props){
 
     return(
         <div className={s.containerClean}>
-            <button onClick={handleClick} className={s.btn}>Clean Filters</button>
+            <form action="">
+                <button onClick={handleClick} className={s.btn}>Clean Filters</button>
+            </form>
         </div>
     )
 }

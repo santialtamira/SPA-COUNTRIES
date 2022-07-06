@@ -14,8 +14,8 @@ function mapStateToProps(state) {
 export function validate(input) {
     let errors = {};
 
-    if(input.name.length < 3){
-        errors.name = 'Activity name must have more than 3 characters';
+    if(input.name.length < 3 || input.name.length > 20 ){
+        errors.name = 'Activity name must have more than 3 characters and less than 20 characters';
     }
     if (!input.name) {
         errors.name = 'Activity name is required';
@@ -41,7 +41,7 @@ function FormActivity(props){
     const [errors, setErrors] = useState({});
 
     const [input, setInput] = useState({
-        name: "", //que el name no tenga más de 20 letras.
+        name: "",
         dificulty: "",
         duration: "",
         season: "",
@@ -102,11 +102,13 @@ function FormActivity(props){
                 <h1 className={s.formTitle}>Add an Activity</h1>
                 <form onSubmit={submitHandler}>
 
+                    <div>
                     <div className={s.twoElements}>
                         <p>Name</p>
                         <input type="text" name="name" onChange={changeHandler} value={input.name} className={s.twoElemBoxA}/>
                     </div>
-                        <div>{errors.name && (<p className={s.danger}>{errors.name}</p>)}</div>
+                    <div>{errors.name && (<p className={s.danger}>{errors.name}</p>)}</div>
+                    </div>
 
                     <div className={s.twoElements}>
                         <p>Dificulty</p>
@@ -125,7 +127,7 @@ function FormActivity(props){
                         <p>Duration in hours</p>
                         <input type="text" name="duration" onChange={changeHandler} value={input.duration} className={s.twoElemBoxA}/>
                     </div>
-                        <div>{errors.duration && (<p className={s.danger}>{errors.duration}</p>)}</div>
+                    <div>{errors.duration && (<p className={s.danger}>{errors.duration}</p>)}</div>
 
                     <div className={s.twoElements}>
                         <p>Season</p>
@@ -139,8 +141,6 @@ function FormActivity(props){
                     </div>
                     <div>{errors.season && (<p className={s.danger}>{errors.season}</p>)}</div>
 
-
-                    
                     <div>
                         <p>Add countries</p>
                         <div id="countriesRepo" className={s.repo}>
