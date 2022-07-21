@@ -26,7 +26,7 @@ function Detail(props){
     return(
         <div className={s.totalCont}>
             <NavBar></NavBar>
-            <div >
+            
                 <div className={s.detailContainer}>
                     <div className={s.leftBox}>
                         <h1>{props.detail.name}</h1>
@@ -65,11 +65,11 @@ function Detail(props){
                         </div>
                     </div>
                 </div>
-            </div>
+            
             
                 <div className={s.footer}>
                     <h2>a</h2>
-                </div>
+                </div> 
         </div>
     )
 }

@@ -1,3 +1,7 @@
+.pageContainer{
+    height: 100vh;
+}
+
 p.danger {
     color: red;
     font-size: 10px;
@@ -7,7 +11,7 @@ p.danger {
 
 .formContainer{
     background-color: #F3F4F6;
-    width: 561px;
+    max-width: 561px;
     margin: 100px auto;
     padding: 25px;
     border-radius: 10px;
@@ -72,4 +76,23 @@ p.danger {
     display: flex;
     background-color: black;
     color: #3750FE ;
+}
+
+@media all and  (max-width: 820px){
+    .selectBox{
+        max-width: 230px;
+    }
+
+    .formContainer{
+        max-width: 320px;
+        margin: 50px auto;
+    }
+
+    .twoElemBoxA{
+        width: 180px;
+    }
+
+    .twoElemBoxB{
+        width: 188px;
+    }
 }

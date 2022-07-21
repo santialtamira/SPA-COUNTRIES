@@ -142,7 +142,7 @@ function FormActivity(props){
                     <div>{errors.season && (<p className={s.danger}>{errors.season}</p>)}</div>
 
                     <div>
-                        <p>Add countries</p>
+                        <h4>Add countries</h4>
                         <div id="countriesRepo" className={s.repo}>
                         </div>
                         <select name="addedCountries" id="addedCountries" className={s.selectBox}>

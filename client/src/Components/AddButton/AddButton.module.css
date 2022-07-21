@@ -14,3 +14,9 @@
     border: #3750FE solid 2px;
     background-color: transparent;
 }
+
+@media all and  (max-width: 820px){
+    .btn{
+        margin-right: 15px;
+    }
+}

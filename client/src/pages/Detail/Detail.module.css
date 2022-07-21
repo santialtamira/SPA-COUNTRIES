@@ -1,6 +1,5 @@
 .detailContainer{
     width: 90%;
-    /* background-color: gray; */
     margin: 0px auto;
     display: flex;
     justify-content: space-between;
@@ -10,6 +9,7 @@
 }
 
 .totalCont{
+    height: 100vh;
 }
 
 .leftBox{
@@ -17,16 +17,16 @@
 }
 
 .middleBox{
-    width: 400px;
+    max-width: 400px;
 }
 
 .rightBox{
-    width: 440px;
-    height: 392px;
+    max-width: 440px;
+    max-height: 392px;
 }
 
 .img{
-    width: 480px;
+    max-width: 480px;
 }
 
 .threeElements{
@@ -39,11 +39,11 @@
     border: #44BA94 1px solid;
     margin: 10px 0px;
     color: #49494C;
+    padding: 10px 20px;
 }
 
 .activityTitle{
     color: #44BA94;
-    /* margin-bottom: 33px; */
 }
 
 .generalinfoTitle{
@@ -51,13 +51,38 @@
 }
 
 .generalInfoBox{
-    /* border: #3750FE 1px solid; */
     margin: 40px 0px;
     color: #49494C;
-    height: 273px;
+    max-height: 273px;
 }
 
 .footer{
     background-color: #49494C;
     color: #49494C;
+}
+
+@media all and  (max-width: 820px){
+    
+    .detailContainer{
+        display: block;
+        flex-wrap: wrap;
+        width: unset;
+        height: fit-content;
+    }
+
+    .leftBox{
+        width: 100%;
+    }
+
+    .generalInfoBox{
+        max-height: 273px;
+    }
+
+    .activityBox{
+        max-height: 273px;
+    }
+
+    .img{
+        max-width: 100%;
+    }
 }
